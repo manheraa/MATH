@@ -1,8 +1,10 @@
 from langchain.chains import RetrievalQA
-
 from langchain_community.vectorstores import FAISS
 from langchain_openai import AzureChatOpenAI,AzureOpenAIEmbeddings
 from langchain_community.embeddings import OCIGenAIEmbeddings
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 #In this demo we will retrieve documents and send these as a context to the LLM.
 
@@ -10,13 +12,13 @@ from langchain_community.embeddings import OCIGenAIEmbeddings
 
 
 # use default authN method API-key
-embeddings=AzureOpenAIEmbeddings(deployment="MAJNU")
+embeddings=AzureOpenAIEmbeddings(deployment=os.getenv('open_ai_emb'))
 
 #Step 2 - here we connect to a chromadb server. we need to run the chromadb server before we connect to it
 
 #Step 3 - here we crete embeddings using 'cohere.embed-english-light-v2.0" model.
 
-llm=AzureChatOpenAI(azure_deployment="loloa",
+llm=AzureChatOpenAI(azure_deployment=os.getenv('AZURE_OPENAI_DEPLOYMENT_NAME'),
             api_version="2024-05-01-preview",
             )
 #Step 4 - here we create a retriever that gets relevant documents (similar in meaning to a query)
