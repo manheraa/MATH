@@ -13,7 +13,7 @@ import os
 
 # use default authN method API-key
 os.environ["AZURE_OPENAI_API_KEY"]=os.getenv('openai_api')
-embeddings=AzureOpenAIEmbeddings(deployment='MAJNU')
+embeddings=AzureOpenAIEmbeddings(deployment='MAJNU',azure_endpoint='https://loloa.openai.azure.com/')
 
 #Step 2 - here we connect to a chromadb server. we need to run the chromadb server before we connect to it
 
