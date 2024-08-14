@@ -13,13 +13,13 @@ import os
 
 # use default authN method API-key
 os.environ["AZURE_OPENAI_API_KEY"]=os.getenv('openai_api')
-embeddings=AzureOpenAIEmbeddings(deployment=os.getenv('open_ai_emb'))
+embeddings=AzureOpenAIEmbeddings(deployment='MAJNU')
 
 #Step 2 - here we connect to a chromadb server. we need to run the chromadb server before we connect to it
 
 #Step 3 - here we crete embeddings using 'cohere.embed-english-light-v2.0" model.
 
-llm=AzureChatOpenAI(azure_deployment=os.getenv('AZURE_OPENAI_DEPLOYMENT_NAME'),
+llm=AzureChatOpenAI(azure_deployment='loloa',
             api_version="2024-05-01-preview",
             )
 #Step 4 - here we create a retriever that gets relevant documents (similar in meaning to a query)
